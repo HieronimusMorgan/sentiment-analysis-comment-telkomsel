@@ -1,18 +1,19 @@
 import re
+
 import pandas as pd
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from nltk.stem import WordNetLemmatizer
 
-df = pd.read_csv('data/dataset.csv', encoding='latin')
+df = pd.read_csv('sentimentanalysisproject/data/cleaned_reduction_new.csv', encoding='latin')
 
 # create stemmer
 factory = StemmerFactory()
 stemmer = factory.create_stemmer()
 lemmatizer = WordNetLemmatizer()
 
-stopword = pd.read_csv('data/stopword.csv', encoding='latin')
+stopword = pd.read_csv('sentimentanalysisproject/data/Reduction Stopword.csv', encoding='latin')
 #
-listStopwords = set(list(stopword.Stopword))
+listStopwords = set(list(stopword.stopword))
 
 character = ['.', ',', ';', ':', '-,', '...', '?', '!', '(', ')', '[', ']', '{', '}', '<', '>', '"', '/', '\'', '#',
              '-', '@']
@@ -20,22 +21,22 @@ character = ['.', ',', ';', ':', '-,', '...', '?', '!', '(', ')', '[', ']', '{',
 
 def clean_doc(doc):
     # Case Folding
-    case_folding = doc.lower()
+    # case_folding = doc.lower()
     # print('case folding: ', case_folding)
 
     # create stemmer
-    factory = StemmerFactory()
-    stemmer = factory.create_stemmer()
+    # factory = StemmerFactory()
+    # stemmer = factory.create_stemmer()
     # Stemming
-    stemmed_words = stemmer.stem(case_folding)
+    # stemmed_words = stemmer.stem(case_folding)
     # print('Stemming: ', stemmed_words)
 
     # Lemmatized
-    lemmatized_words = lemmatizer.lemmatize(word=stemmed_words, pos='v')
+    # lemmatized_words = lemmatizer.lemmatize(word=stemmed_words, pos='v')
     # print('Lemmatizer: ', lemmatized_words)
 
     # Tokenizing
-    words = lemmatized_words.split(" ")
+    words = doc.split(" ")
     # print('Tokenizing: ', words)
 
     # stopword = pd.read_csv('data/stopwords.csv', encoding='latin')
@@ -48,13 +49,13 @@ def clean_doc(doc):
     # print('Stopword: ', shortlisted_words)
 
     # Punctuation Removal
-    cleaned_words = [punctuation_removal(w) for w in shortlisted_words]
+    # cleaned_words = [punctuation_removal(w) for w in shortlisted_words]
     # print('Punctuation: ', cleaned_words)
 
-    word = ' '.join(cleaned_words)
-    stemmed_words = stemmer.stem(word)
-    words = stemmed_words.split(" ")
-    return words
+    # word = ' '.join(cleaned_words)
+    # stemmed_words = stemmer.stem(word)
+    # words = stemmed_words.split(" ")
+    return shortlisted_words
 
 
 def punctuation_removal(text):

@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 
 # Input dataset
-df = pd.read_csv('data/cleaned.csv', encoding='latin')
+df = pd.read_csv('data/cleaned_reduction_fix.csv', encoding='latin')
 
 #  Split the dataset
 x_train, x_test, y_train, y_test = train_test_split(df.Tweet, df.Label, test_size=0.2, random_state=100)

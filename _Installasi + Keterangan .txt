@@ -1,0 +1,25 @@
+pip install sklearn
+pip install pandas
+pip install nltk
+pip install sastrawi
+pip install keras
+pip install tensorflow
+pip install matplotlib
+pip install seabron
+pip install PyQt5
+pip install sklearn
+
+Positif = 0
+Negatif = 1
+
+cleaned_data.csv           = non reduksi data
+cleaned_reduction.csv      = reduksi kemunculan kata sebanyak 2
+cleaned_reduction_10.csv   = reduksi kemunculan kata sebanyak 10
+cleaned_reduction_fix.csv  = reduksi kemunculan kata sebanyak 10 + benarkan typo + hapus singkatan sinonim stopwords
+
+Akurasi K-Fold = 5 & Neighbor = 10
+
+cleaned_data.csv           = 0.8574938574938575
+cleaned_reduction.csv      = 0.8673218673218673
+cleaned_reduction_10.csv   = 0.8697788697788698
+cleaned_reduction_new.csv  = 0.855036855036855
