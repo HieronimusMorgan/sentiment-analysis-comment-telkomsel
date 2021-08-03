@@ -141,7 +141,7 @@ class Ui_MainWindow(object):
     def process(self):
         kFold = int(self.etFold.text())
         neighbors = int(self.etNeighbor.text())
-        #  Split the dataset
+        #  Split the dataset, Training 80%, Testing 20%, Random 100x
         x_train, x_test, y_train, y_test = train_test_split(self.df.Tweet, self.df.Label, test_size=0.2,
                                                             random_state=100)
 
