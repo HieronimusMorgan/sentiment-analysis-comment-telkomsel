@@ -20,22 +20,22 @@ character = ['.', ',', ';', ':', '-,', '...', '?', '!', '(', ')', '[', ']', '{',
 
 def clean_doc(doc):
     # Case Folding
-    # case_folding = doc.lower()
+    case_folding = doc.lower()
     # print('case folding: ', case_folding)
 
     # create stemmer
-    # factory = StemmerFactory()
-    # stemmer = factory.create_stemmer()
+    factory = StemmerFactory()
+    stemmer = factory.create_stemmer()
     # Stemming
-    # stemmed_words = stemmer.stem(case_folding)
+    stemmed_words = stemmer.stem(case_folding)
     # print('Stemming: ', stemmed_words)
 
     # Lemmatized
-    # lemmatized_words = lemmatizer.lemmatize(word=stemmed_words, pos='v')
+    lemmatized_words = lemmatizer.lemmatize(word=stemmed_words, pos='v')
     # print('Lemmatizer: ', lemmatized_words)
 
     # Tokenizing
-    words = doc.split(" ")
+    words = lemmatized_words.split(" ")
     # print('Tokenizing: ', words)
 
     # stopword = pd.read_csv('data/stopwords.csv', encoding='latin')
@@ -48,13 +48,13 @@ def clean_doc(doc):
     # print('Stopword: ', shortlisted_words)
 
     # Punctuation Removal
-    # cleaned_words = [punctuation_removal(w) for w in shortlisted_words]
+    cleaned_words = [punctuation_removal(w) for w in shortlisted_words]
     # print('Punctuation: ', cleaned_words)
 
-    # word = ' '.join(cleaned_words)
-    # stemmed_words = stemmer.stem(word)
-    # words = stemmed_words.split(" ")
-    return shortlisted_words
+    word = ' '.join(cleaned_words)
+    stemmed_words = stemmer.stem(word)
+    words = stemmed_words.split(" ")
+    return words
 
 
 def punctuation_removal(text):
