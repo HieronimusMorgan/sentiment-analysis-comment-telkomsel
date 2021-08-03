@@ -17,7 +17,7 @@ tfidf_vectorizer = TfidfVectorizer(max_df=0.7)
 # Fit and transform train set, transform test set
 tfidf_train = tfidf_vectorizer.fit_transform(x_train)
 tfidf_test = tfidf_vectorizer.transform(x_test)
-
+tfidf_train = tfidf_vectorizer.fit_transform(df.Tweet)
 # Convert to Cosine Similarity
 cosine_train = cosine_similarity(tfidf_train)
 cosine_test = cosine_similarity(tfidf_test, tfidf_train)
